@@ -20,4 +20,16 @@ def reconstruct_trip(tickets, length):
     YOUR CODE HERE
     """
 
-    pass
+    # create hashtable
+    for ticket in tickets:
+        hash_table_insert(hashtable, ticket.source, ticket.destination)
+        
+    current = "NONE"
+    
+    # loop through and set the next destination on the list
+    for i in range(length):
+        route[i] = hash_table_retrieve(hashtable, current)
+        current = route[i]
+      
+    # return all but the last route on the list     
+    return route[:-1]
